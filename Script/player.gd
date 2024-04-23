@@ -26,7 +26,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if is_win:
 		return
-		
+	
+	# Player movement
 	if direction == DIRECTION.STATIC:
 		if Input.is_action_just_pressed("move_left"):
 			direction = DIRECTION.LEFT
@@ -40,23 +41,19 @@ func _process(delta: float) -> void:
 		elif Input.is_action_just_pressed("move_bottom"):
 			direction = DIRECTION.BOTTOM
 			target_y += MOVE_STEP
-		
-func _physics_process(delta: float) -> void:
-	if is_win:
-		return
-		
-	if (direction != DIRECTION.STATIC && not can_move()):
+	elif not can_move():
 		direction = DIRECTION.STATIC
 		target_x = snapped(position.x, MOVE_STEP)
 		target_y = snapped(position.y, MOVE_STEP)
 		
 		return
-	
+
 	position.y = lerp(position.y, target_y * 1.0, SPEED)
 	position.x = lerp(position.x, target_x * 1.0, SPEED)
 	
 	set_animation()
 	
+	# Pusing box
 	var box = _level.get_box(target_x, target_y)
 	if (box != null && box.can_push(direction) && not box.pushing):
 		box.push(direction)
