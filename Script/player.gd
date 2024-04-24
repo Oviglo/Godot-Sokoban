@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Node2D
 
 # How many pixels player move
 const MOVE_STEP = 64
@@ -47,9 +47,9 @@ func _process(delta: float) -> void:
 		target_y = snapped(position.y, MOVE_STEP)
 		
 		return
-
-	position.y = lerp(position.y, target_y * 1.0, SPEED)
-	position.x = lerp(position.x, target_x * 1.0, SPEED)
+	else:
+		position.y = lerp(position.y, target_y * 1.0, SPEED)
+		position.x = lerp(position.x, target_x * 1.0, SPEED)
 	
 	set_animation()
 	

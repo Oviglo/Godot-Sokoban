@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dbud6bvk8fgoi"]
+[gd_scene load_steps=22 format=3 uid="uid://dbud6bvk8fgoi"]
 
 [ext_resource type="Texture2D" uid="uid://c0rior1tt71l4" path="res://Entity/player.png" id="1_dusym"]
 [ext_resource type="Script" path="res://Script/player.gd" id="1_ftv1d"]
@@ -158,9 +158,6 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5wsft"]
-size = Vector2(64, 64)
-
 [sub_resource type="Animation" id="Animation_5cuk0"]
 resource_name = "win"
 loop_mode = 1
@@ -182,17 +179,13 @@ _data = {
 "win": SubResource("Animation_5cuk0")
 }
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="Node2D"]
 script = ExtResource("1_ftv1d")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_o6qaf")
 animation = &"idle_bottom"
 offset = Vector2(32, 32)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(32, 32)
-shape = SubResource("RectangleShape2D_5wsft")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
