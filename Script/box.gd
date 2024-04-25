@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends Node2D
 
 @onready var _level := get_parent()
 
